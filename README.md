@@ -11,9 +11,9 @@
 | Name | Student Number | Role |
 |---|---|---|
 | Jandre Van Zyl | 20230660 | Member 1 — Project Manager / GitHub Coordinator |
-| Dewald Van Jaarsveldt | | Member 2 — UI Developer |
-| Tyler Davel | | Member 3 — Logic Developer |
-| Vehan Kuhn | | Member 4 — Tester & Documentation Specialist |
+| Dewald Van Jaarsveldt | 20230258 | Member 2 — UI Developer |
+| Tyler Davel | 20230614 | Member 3 — Logic Developer |
+| Vehan Kuhn | 20230275 | Member 4 — Tester & Documentation Specialist |
 
 ---
 
