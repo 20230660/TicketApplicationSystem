@@ -1,4 +1,4 @@
-# TicketApplicationSystem# 🎫 Ticket Application System
+# TicketApplicationSystem#  Ticket Application System
 
 > **Module:** Software Design and Testing C# — SDT621 | NQF Level 6
 > **Assessment:** Week 2 Friday Project | 24 April 2026
