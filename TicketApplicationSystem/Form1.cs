@@ -26,6 +26,9 @@ namespace TicketApplicationSystem
             this.Font = new Font("Segoe UI", 10F);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            btnCalculate.Click += btnCalculate_Click;
+            btnClear.Click += btnClear_Click;
+            btnExit.Click += btnExit_Click;
         }
 
         // -------------------------------------------------------
@@ -36,9 +39,66 @@ namespace TicketApplicationSystem
             Application.Exit();
         }
 
-        // -------------------------------------------------------
-        // btnCalculate_Click and btnClear_Click
-        // will be implemented by Member 3 (Logic Developer)
-        // -------------------------------------------------------
+        private void btnCalculate_Click(object sender, EventArgs e)
+        {
+            string name = txtName.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                MessageBox.Show("Enter passenger name");
+                return;
+            }
+
+            if (!int.TryParse(txtAge.Text, out int age))
+            {
+                MessageBox.Show("Enter valid age");
+                return;
+            }
+
+            if (!double.TryParse(txtDistance.Text, out double distance))
+            {
+                MessageBox.Show("Enter valid distance");
+                return;
+            }
+
+            if (cmbCategory.SelectedIndex < 0)
+            {
+                MessageBox.Show("Select category");
+                return;
+            }
+
+            if (!rdbMale.Checked && !rdbFemale.Checked)
+            {
+                MessageBox.Show("Select gender");
+                return;
+            }
+
+            bool isFemale = rdbFemale.Checked;
+
+            double price = TicketCalculator.CalculatePrice(age, distance, cmbCategory.SelectedIndex, isFemale);
+
+            string gender = rdbMale.Checked ? "Male" : "Female";
+            string category = cmbCategory.SelectedItem.ToString();
+
+            lblSummaryOutput.ForeColor = Color.Black;
+            lblSummaryOutput.Text =
+                $"Passenger Name: {name}\n" +
+                $"Gender: {gender}\n" +
+                $"Age: {age}\n" +
+                $"Category: {category}\n" +
+                $"Distance: {distance} km\n" +
+                $"Final Price: R{price}";
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtName.Clear();
+            txtAge.Clear();
+            txtDistance.Clear();
+            rdbMale.Checked = true;
+            cmbCategory.SelectedIndex = 0;
+            lblSummaryOutput.Text = "Fill in the form above and click Calculate.";
+            lblSummaryOutput.ForeColor = Color.Gray;
+        }
     }
 }
